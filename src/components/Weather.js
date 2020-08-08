@@ -17,6 +17,12 @@ const Weather = ({ report, checkTime }) => {
   const [isMorning, setMorning] = useState(false);
   const [isAfternoon, setAfternoon] = useState(false);
   const [isEvening, setEvening] = useState(false);
+  const [temperature, setTemperature] = useState(report.currently.temperature);
+  const [action, setAction] = useState("F");
+
+  const { summary, icon } = report.currently;
+  const timezone = report.timezone;
+
   useEffect(() => {
     let today = new Date();
     let curHr = today.getHours();
@@ -38,8 +44,21 @@ const Weather = ({ report, checkTime }) => {
     checkTime({ isMorning, isAfternoon, isEvening });
   });
 
-  const { temperature, summary, icon } = report.currently;
-  const timezone = report.timezone;
+  const convertTemp = () => {
+    if (action === "F") {
+      // Convert in C
+      var fTemp = temperature;
+      var fToCel = ((fTemp - 32) * 5) / 9;
+      fToCel = fToCel.toFixed(2);
+
+      setTemperature(fToCel);
+      setAction("C");
+    } else {
+      setTemperature(report.currently.temperature);
+      setAction("F");
+    }
+  };
+
   return (
     <div className="weather">
       <div className="location">
@@ -48,9 +67,9 @@ const Weather = ({ report, checkTime }) => {
       </div>
 
       <div className="temprature">
-        <div className="degree-section">
+        <div className="degree-section" onClick={convertTemp}>
           <h2 className="temprature-degree">{temperature}</h2>
-          <span>F</span>
+          <span>{action}</span>
         </div>
       </div>
 

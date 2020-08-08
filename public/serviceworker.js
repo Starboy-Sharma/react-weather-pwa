@@ -1,5 +1,19 @@
 const CACHE_NAME = "version-1";
-const urlsToCache = ["index.html", "offline.html"];
+// const urlsToCache = ["index.html", "offline.html"];
+const urlsToCache = [
+  "/",
+  "/styles/styles.css",
+  "/script/webpack-bundle.js",
+  "/static/js/bundle.js",
+  "/static/js/main.chunk.js",
+  "/static/js/0.chunk.js",
+  "/manifest.json",
+  "/images/sun.png",
+  "/images/1.png",
+  "/images/2.png",
+  "/images/3.png",
+  "/images/favicon.png",
+];
 
 const self = this;
 
@@ -16,8 +30,8 @@ self.addEventListener("install", (event) => {
 // Listen for requests
 self.addEventListener("fetch", (event) => {
   event.respondWith(
-    caches.match(event.request).then(() => {
-      return fetch(event.request).catch(() => caches.match("offline.html"));
+    caches.match(event.request).then((cacheRes) => {
+      return cacheRes || fetch(event.request);
     })
   );
 });
