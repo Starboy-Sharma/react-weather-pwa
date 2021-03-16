@@ -20,3 +20,12 @@ A React weather app that shows weather by accessing the user's geolocation. I am
 ### CORS Error
 If you are facing a warning popup on this web app start. Please visit this url <a href="https://cors-anywhere.herokuapp.com/corsdemo"> Request API access </a> and click on the button and try to load the web app again.
 I am using testing API which may throw error 403 (Forbidden).
+
+
+### Screenshots
+<p float="left">
+<img src="https://github.com/Starboy-Sharma/react-weather-pwa/blob/master/public/images/ss%2001.png" width="200px" height="350" hspace="20">
+<img src="https://github.com/Starboy-Sharma/react-weather-pwa/blob/master/public/images/ss%2003.png" width="200px" height="350" hspace="20">
+<img src="https://github.com/Starboy-Sharma/react-weather-pwa/blob/master/public/images/ss%2004.png" width="200px" height="350" hspace="20">
+<img src="https://github.com/Starboy-Sharma/react-weather-pwa/blob/master/public/images/ss%2005.png" width="200px" height="350">
+  </p>
