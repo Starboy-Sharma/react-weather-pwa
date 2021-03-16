@@ -16,3 +16,7 @@ A React weather app that shows weather by accessing the user's geolocation. I am
 * Temprature can be change from F to C.
 * Offline support.
 * Responsive design using modern CSS.
+
+### CORS Error
+If you are facing a warning popup on this web app start. Please visit this url <a href="https://cors-anywhere.herokuapp.com/corsdemo"> Request API access </a> and click on the button and try to load the web app again.
+I am using testing API which may throw error 403 (Forbidden).
