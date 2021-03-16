@@ -1,6 +1,6 @@
 import Axios from "axios";
 
-async function fetchWeather(position) {
+async function getWeather(position) {
   try {
     const long = position.coords.longitude;
     const lat = position.coords.latitude;
@@ -26,4 +26,34 @@ async function fetchWeather(position) {
   }
 }
 
-export default fetchWeather;
+
+async function fetchLocalWeather() {
+
+  try {
+
+    const response = await fetch('sampleResponse.json', {
+      headers : { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    });
+    
+    if(response.status !== 200) {
+      throw Error('File not found ' + response);
+    }
+    
+    const data = await response.json();
+  
+    return data;
+
+  } catch(error) {
+    console.error('Error in fetch sample weather', error.message);
+
+    return false;
+  }
+}
+
+export default {
+  getWeather,
+  fetchLocalWeather
+};

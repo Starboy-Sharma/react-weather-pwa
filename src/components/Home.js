@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./style/Home.css";
 
-import getWeather from "../api/getWeather";
+import w from "../api/getWeather";
 import Weather from "./Weather";
 
 const LoadWeatherComponent = function (props) {
@@ -53,7 +53,14 @@ const Home = () => {
           setLocationAllow(true);
 
           (async function () {
-            let res = await getWeather(position);
+            let res = await w.getWeather(position);
+
+            if (res === undefined) {
+              console.warn('This app is now going to use fake data.')
+              res = {};
+              res.data = await w.fetchLocalWeather();
+              console.log(res);
+            }
 
             setWeather(res.data);
             setLoading(true);
