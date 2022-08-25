@@ -56,9 +56,12 @@ const Home = () => {
             let res = await w.getWeather(position);
 
             if (res === undefined) {
-              console.warn('This app is now going to use fake data.');
+              alert('This app is now going to use fake data. Please check console for more information');
 
-              alert("Warning! This app is using sample data. For fix please visit: https://github.com/Starboy-Sharma/react-weather-pwa "); 
+              console.warn('%c Warning! This app is using sample data.', 'font-size: 24px; color: orange;');
+              console.log('%c You need to enable the temporary access: https://github.com/Starboy-Sharma/react-weather-pwa', 'font-size: 18px; color: green');
+
+              alert(""); 
 
               res = {};
               res.data = await w.fetchLocalWeather();
